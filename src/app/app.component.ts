@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'not-another-todo-app';
+  get appTitle(): string {
+    return this.title.getTitle();
+  }
+
+  constructor(private title: Title) {
+    title.setTitle('Not Another Todo App');
+  }
 }
