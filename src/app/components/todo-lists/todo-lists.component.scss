@@ -1,0 +1,18 @@
+@import '../../../styles/variables.scss';
+
+.container {
+    padding: 1rem 2rem;
+}
+
+.todo-lists {
+    &__item {
+        padding: 0.25rem 0.5rem;
+        color: $gray;
+        border: 1px solid $gray;
+        border-radius: 0.5rem;
+
+        & + .todo-lists__item {
+        margin-top: 0.25rem;
+        }
+    }
+}

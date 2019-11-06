@@ -1,0 +1,32 @@
+<div class="container">
+    <ul class="reset todo-lists">
+      <ng-container *ngFor="let todoList of todoLists" >
+        <li
+          class="clicky todo-lists__item"        
+          [routerLink]="['/todoList', todoList.id]"
+        >
+          <div>{{ todoList.title }}</div>
+          <div *ngIf="todoList.hasTodos() && !todoList.isCompleted()">
+            {{todoList.todos.length}} todos to do
+          </div>
+          <div *ngIf="todoList.hasTodos() && todoList.isCompleted()">
+            All done! 🚀
+          </div>
+          <div *ngIf="!todoList.hasTodos()">
+            {{todoList.todos.length}} todos
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  
+    <form class="mt-3" (ngSubmit)="addList(todoListsInput.value)" novalidate>
+      <input
+        #todoListsInput
+        class="create-input"
+        type="text"
+        placeholder="New list"
+        required
+      />
+    </form>
+  </div>
+    
